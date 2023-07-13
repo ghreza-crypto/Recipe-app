@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag '_form' %>
+
+<%= form_with model: @food, url: foods_path, class: 'form' do |form| %>
+    <div class="form-group">    
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'input'%>
+    </div>
+    <div class="form-group">
+        <%= form.label :measurement_unit %>
+        <%= form.text_field :measurement_unit, class: 'input'%>
+    </div>
+    <div class="form-group">
+        <%= form.label :price %>
+        <%= form.number_field :price, class: 'input'%>
+    </div>
+    <%= form.submit %>
+<% end %>
