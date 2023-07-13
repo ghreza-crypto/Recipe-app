@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag 'food_index' %>
+<section class="food-section">
+    <h1>Food</h1>
+
+    <div class='table-container'>
+        <%= link_to 'Add New Food', new_food_path, class: 'add-food' %>
+        <table>
+            <thead>
+                <td>Food</td>
+                <td>Measurement Unit</td>
+                <td>Unit Price</td>
+                <td>Actions</td>
+            </thead>
+            <% @foods.each do |food| %> 
+                <tr class="tr">
+                    <td><%= food.name %></td>
+                    <td><%= food.measurement_unit %></td>
+                    <td><%= food.price %></td>
+                    <td><%= button_to 'Delete', food_path(food.id), method: :delete, class: 'delete-button' %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</section>
