@@ -1,5 +1,5 @@
 
-<main>
+<main class="mt-3">
         <section class="shopping_list1">
             <header>
                 <h2>Shopping List</h2>
@@ -8,11 +8,11 @@
 
         <section class="shopping_list2">
 
-            <article>
-                <div>
+            <article class="row">
+                <div class="col-6">
                     <p>Amount of food items to buy: <%= @shopping_lists.length%> </p>
                 </div>
-                <div>
+                <div class="col-6">
                     <p>Total value of food needed: $<%=@total_price%></p>
                 </div>
             </article>
