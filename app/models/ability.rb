@@ -18,7 +18,9 @@ class Ability
     end
 
     # <% if can? :manage, @question %>
-    #   <%= link_to 'Edit', edit_question_path(@question) %> | <%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure you want to delete this job?' } %>
+    #   <%= link_to 'Edit', edit_question_path(@question)
+    # %> | <%= link_to 'Destroy', @question, method: :delete, data:
+    # { confirm: 'Are you sure you want to delete this job?' } %>
     # <% end %>
 
     # return unless user.present?
