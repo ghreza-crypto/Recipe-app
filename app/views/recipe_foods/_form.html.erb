@@ -13,24 +13,26 @@
     </div>
   <% end %>
 
-<div class="">
-  <%= form.label :food %>
+<div class="d-flex-column justify-content-center">
   <div>
-    <%= form.select :food_id, Food.all.collect {|food| [food.name, food.id]},{
-    include_blank: true} , class:"form-select" %>
+    <%= form.label :food %>
+    <div>
+      <%= form.select :food_id, Food.all.collect {|food| [food.name, food.id]},{
+      include_blank: true} , class:"form-select" %>
+    </div>
   </div>
-</div>
 
-<div class="">
-  <%= form.label :quantity %>
-  <div>
-    <%= form.number_field :quantity , class:"form-control" , required: true,
-    placeholder: '1', min: 1%>
+  <div class="">
+    <%= form.label :quantity %>
+    <div>
+      <%= form.number_field :quantity , class:"form-control col-6" , required: true,
+      placeholder: '1', min: 1%>
+    </div>
   </div>
+  <br/>
+  <div class=""><%= form.submit "Add", class:"btn btn-dark" %></div>
+  <%end%>
 </div>
-
-<div class=""><%= form.submit "Add", class:"btn btn-dark" %></div>
-<%end%>
 <div class="">
-  <%=link_to 'Return to Recipes', recipe_path(@recipe.id), class:"btn btn-link"%>
+  <%= link_to 'Return to Recipes', recipe_path(@recipe.id), class:"btn btn-link mt-3"%>
 </div>
