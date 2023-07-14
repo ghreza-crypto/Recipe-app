@@ -1,0 +1,43 @@
+
+<main>
+        <section class="shopping_list1">
+            <header>
+                <h2>Shopping List</h2>
+            </header>
+        </section>
+
+        <section class="shopping_list2">
+
+            <article>
+                <div>
+                    <p>Amount of food items to buy: <%= @shopping_lists.length%> </p>
+                </div>
+                <div>
+                    <p>Total value of food needed: $<%=@total_price%></p>
+                </div>
+            </article>
+
+            <table class="styled_table">
+
+                <thead>
+                    <tr class="tr">
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                  <% @shopping_lists.each do |food| %>
+                        <tr class="active_row custom_row1"> 
+                            <th class="custom_font1"><%= food[:name]%></th>
+                            <th class="custom_font1"><%= food[:quantity]%></th>
+                            <th class="custom_font1"><%= food[:price]%></th>
+                        </tr>
+                    <% end %>
+                </tbody>
+
+            </table>
+
+
+        </section>
+    </main>

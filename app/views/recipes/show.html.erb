@@ -1,0 +1,82 @@
+<%= stylesheet_link_tag 'recipemain' %>
+<main>
+
+    <section class="recipe_detail_section1">
+
+            <header>
+                <h2><%= @recipe.name%></h2>
+            </header>
+
+            <article class="recipe_detail_section1_article">
+
+                <div class="recipe_detail_section1_article_div1">
+                    <p>Preparation time: <%= @recipe.preparation_time %></p>
+                    <p>Cooking time: <%= @recipe.cooking_time %></p>
+                    <p>Steps: <%= @recipe.description %></p> 
+                </div>
+
+                <div class="recipe_detail_section1_article_div2">
+                    <p>Public</p>
+                    <div>
+                    <% if @recipe.public %>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <% end %>
+
+                    <% if !@recipe.public %>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <% end %>
+                    </div>
+                    
+                </div>
+
+            </article>
+
+    </section>
+
+    <section class="recipe_detail_section2">
+            <button class="custom_btn1"><%= link_to 'Generate Shopping List', shopping_lists_path, class:"td_none custom_color1" %></button>
+            <button class="custom_btn1">
+            <%=link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class:"td_none custom_color1"%>
+            </button>
+        </section>
+
+        <section class="recipe_detail_section3">
+
+            <table class="styled_table">
+
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Value</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody> 
+
+                <% @recipe.recipe_foods.each do |recipeFood|%> 
+                    <tr class="active_row custom_row1"> 
+                        <th class="custom_font1"><%= recipeFood.food.name%></th>
+                        <th class="custom_font1"><%= recipeFood.quantity %><%= recipeFood.food.measurement_unit  %></th>
+                        <th class="custom_font1">$<%= recipeFood.quantity.to_i * recipeFood.food.price %></th>
+                        <th class="custom_font1 table_flex1">
+                        <button class="custom_btn1"><%=link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id:recipeFood.id), class:"td_none custom_color1"%></button>
+                        <%=button_to "Delete", recipe_recipe_food_path(recipe_id: @recipe.id, id: recipeFood.id), method: :delete, class:"custom_btn1 custom_color1"%>
+                        </th>
+                    </tr>
+                <% end %> 
+
+                </tbody>
+
+            </table>
+
+    </section>
+
+</main>

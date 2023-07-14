@@ -5,18 +5,18 @@
             <li> Welcome <span><%= current_user.name.capitalize %>!</span></li>
             <div class='nav-links'>
                 <li><%= link_to "Food", foods_path, class: 'home-link' %></li>
-                <li><%= link_to "Recipes", foods_path, class: 'home-link' %></li>
-                <li><%= link_to "Public Recipes", foods_path, class: 'home-link' %></li>
-                <li><%= link_to "Shopping List", foods_path, class: 'home-link' %></li>
+                <li><%= link_to "Recipes", recipes_path, class: 'home-link' %></li>
+                <li><%= link_to "Public Recipes", public_recipes_path, class: 'home-link' %></li>
+                <li><%= link_to "Shopping List", shopping_lists_path, class: 'home-link' %></li>
             </div>
             <li> <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: 'sign-out-button' %></li>
         <% elsif user_signed_in? %>
             <li><%= link_to "Home", root_path, class: 'home-link' %></li>
             <div class='nav-links'>
                 <li><%= link_to "Food", foods_path, class: 'home-link' %></li>
-                <li><%= link_to "Recipes", foods_path, class: 'home-link' %></li>
-                <li><%= link_to "Public Recipes", foods_path, class: 'home-link' %></li>
-                <li><%= link_to "Shopping List", foods_path, class: 'home-link' %></li>
+                <li><%= link_to "Recipes", recipes_path, class: 'home-link' %></li>
+                <li><%= link_to "Public Recipes", public_recipes_path, class: 'home-link' %></li>
+                <li><%= link_to "Shopping List", shopping_lists_path, class: 'home-link' %></li>
             </div>
             <li> <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: 'sign-out-button' %></li>
         <% else %>

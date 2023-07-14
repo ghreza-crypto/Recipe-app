@@ -1,0 +1,36 @@
+<h4>Add Recipe Food</h4>
+<%= form_with model: [@recipe, @recipe.recipe_foods.create] do |form|%>
+
+<% if recipe_food.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:</h2>
+
+      <ul>
+        <% recipe_food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="">
+  <%= form.label :food %>
+  <div>
+    <%= form.select :food_id, Food.all.collect {|food| [food.name, food.id]},{
+    include_blank: true} , class:"form-select" %>
+  </div>
+</div>
+
+<div class="">
+  <%= form.label :quantity %>
+  <div>
+    <%= form.number_field :quantity , class:"form-control" , required: true,
+    placeholder: '1', min: 1%>
+  </div>
+</div>
+
+<div class=""><%= form.submit "Add", class:"btn btn-dark" %></div>
+<%end%>
+<div class="">
+  <%=link_to 'Return to Recipes', recipe_path(@recipe.id), class:"btn btn-link"%>
+</div>
