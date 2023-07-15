@@ -12,7 +12,8 @@ RSpec.describe Food, type: :model do
     end
 
     it 'should have the attributes' do
-      expect(@food).to have_attributes(name: 'Apple', user_id: @user.id, measurement_unit: 'grams', price: 10, quantity: 1)
+      expect(@food).to have_attributes(name: 'Apple', user_id: @user.id, measurement_unit: 'grams', price: 10,
+                                       quantity: 1)
     end
   end
 

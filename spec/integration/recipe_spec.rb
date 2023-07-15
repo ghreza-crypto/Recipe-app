@@ -5,7 +5,8 @@ RSpec.describe 'Recipe integration tests', type: :feature do
 
   before(:each) do
     @user = User.create(name: 'John', email: 'john@gmail.com', password: '123456', password_confirmation: '123456')
-    @recipe = Recipe.create(name: 'Apple Pie', preparation_time: '10 minutes', cooking_time: '20 minutes', description: 'This is a description', public: true, user_id: @user.id)
+    @recipe = Recipe.create(name: 'Apple Pie', preparation_time: '10 minutes', cooking_time: '20 minutes',
+                            description: 'This is a description', public: true, user_id: @user.id)
 
     allow_any_instance_of(ApplicationController).to receive(:authorize!).and_return(true)
     login_as(@user, scope: :user)
