@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag 'recipemain' %>
+
+<section class='new-recipe-section'>
+  <%= link_to "Back to recipes", recipes_path, class: 'back-link'%>
+
+  <h1 class='form-title'>New recipe</h1>
+
+  <%= render "form", recipe: @recipe %>
+</section>

@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'recipemain' %>
+<h1 class="text-center">Recipes</h1>
+<button class="recipe-add-btn float-right"><%= link_to "Add New Recipe", new_recipe_path %> </button>
+<br/>
+<br/>
+<% @recipes.each do |recipe| %>
+  <div class="card mb-3 mt-3 p-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <h4 class="td-name"><%= link_to recipe.name, recipe_path(recipe), class: "recip-title" %></h4>
+        <button><%= link_to "Remove", recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete Recipe?" } %></button> 
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="td-desc card-text"><%= recipe.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

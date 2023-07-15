@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag 'recipemain' %>
+<main>
+
+<section class="pub-sect-one">
+        <h1>Public Recipes</h1>
+</section>
+
+<section class="public_section2">
+<table>
+<thead>
+<td>UserName</td>
+<td>Food</td>
+<td>Total Food Items</td>
+<td>Total Price</td>
+</thead>
+<% @recipes.each do |recipe| %>
+    <tr class="tr">
+    <td>By: <%= recipe.user.name %></td>
+    <td><%= link_to recipe.name, recipe, class: "td_none" %></td>
+    <td><%= @ingredients.where(recipe: recipe).count %></td>
+    <td>$<%= @ingredients.where(recipe: recipe).map {|value| value.food.price * value.quantity}.sum %></td>
+    </tr>
+    <% end %>
+</table>
+</section>
+
+</main>
+

@@ -1,0 +1,82 @@
+.food-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-top: 2rem;
+  }
+
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .add-food {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: #000;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid #000;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+
+  table {
+    width: 40rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin-top: 2rem;
+
+    th,
+    td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    thead {
+      background-color: #000;
+      border: 1px solid #000;
+
+      td {
+        font-weight: 700;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.delete-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}

@@ -1,0 +1,44 @@
+.header {
+  padding: 1.5rem;
+  background-color: #000;
+  box-shadow: 0 0 10px #000000b6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
+    list-style: none;
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 700;
+
+    .sign-out-button,
+    a {
+      background-color: transparent;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-weight: 700;
+
+      &:hover {
+        color: #8490ff;
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .services {
+    display: flex;
+    gap: 2rem;
+  }
+}
