@@ -10,10 +10,12 @@
     <div class="col-md-4">
       <div class="card-body">
         <%= form_for @recipe do |f| %>
-          <div class="field">
-            <%= f.label :public %>
-            <%= f.check_box :public, { checked: @recipe.public?, onchange: 'this.form.submit();' }, 'true', 'false' %>
-          </div>
+          <% if @recipe.user == current_user %>
+            <div class="field">
+              <%= f.label :public %>
+              <%= f.check_box :public, { checked: @recipe.public?, onchange: 'this.form.submit();' }, 'true', 'false' %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -24,9 +26,11 @@
 
     <section class="recipe_detail_section2">
             <button class="custom_btn1 mr-5"><%= link_to 'Generate Shopping List', shopping_lists_path, class:"td_none custom_color1" %></button>
-            <button class="custom_btn1 ml-5">
-            <%=link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class:"td_none custom_color1"%>
-            </button>
+            <% if @recipe.user == current_user %>
+              <button class="custom_btn1 ml-5">
+                <%=link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class:"td_none custom_color1"%>
+              </button>
+            <% end %>
         </section>
 
         <section class="recipe_detail_section3">
