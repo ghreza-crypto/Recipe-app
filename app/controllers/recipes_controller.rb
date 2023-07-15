@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all.includes(:user).filter { |recip| recip.user_id == current_user.id }
+    @recipes = current_user.recipes.includes(:user).filter { |recip| recip.user_id == current_user.id }
     respond_to do |format|
       format.html
       format.json { render json: @recipes, status: 200 }

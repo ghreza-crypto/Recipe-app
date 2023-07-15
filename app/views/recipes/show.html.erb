@@ -1,49 +1,36 @@
 <%= stylesheet_link_tag 'recipemain' %>
+<h2 class="mt-4"><%= @recipe.name%></h2>
+<div class="card mb-3 mt-3 mb-5 p-3 b-0">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <p>Preparation time: <%= @recipe.preparation_time %></p>
+      <p>Cooking time: <%= @recipe.cooking_time %></p>
+      <p>Steps: <%= @recipe.description %></p> 
+    </div>
+    <div class="col-md-4">
+      <div class="card-body">
+        <%= form_for @recipe do |f| %>
+          <% if @recipe.user == current_user %>
+            <div class="field">
+              <%= f.label :public %>
+              <%= f.check_box :public, { checked: @recipe.public?, onchange: 'this.form.submit();' }, 'true', 'false' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <main>
 
-    <section class="recipe_detail_section1">
-
-            <header>
-                <h2><%= @recipe.name%></h2>
-            </header>
-
-            <article class="recipe_detail_section1_article">
-
-                <div class="recipe_detail_section1_article_div1">
-                    <p>Preparation time: <%= @recipe.preparation_time %></p>
-                    <p>Cooking time: <%= @recipe.cooking_time %></p>
-                    <p>Steps: <%= @recipe.description %></p> 
-                </div>
-
-                <div class="recipe_detail_section1_article_div2">
-                    <p>Public</p>
-                    <div>
-                    <% if @recipe.public %>
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <% end %>
-
-                    <% if !@recipe.public %>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <% end %>
-                    </div>
-                    
-                </div>
-
-            </article>
-
-    </section>
-
     <section class="recipe_detail_section2">
-            <button class="custom_btn1"><%= link_to 'Generate Shopping List', shopping_lists_path, class:"td_none custom_color1" %></button>
-            <button class="custom_btn1">
-            <%=link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class:"td_none custom_color1"%>
-            </button>
+            <button class="custom_btn1 mr-5"><%= link_to 'Generate Shopping List', shopping_lists_path, class:"td_none custom_color1" %></button>
+            <% if @recipe.user == current_user %>
+              <button class="custom_btn1 ml-5">
+                <%=link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class:"td_none custom_color1"%>
+              </button>
+            <% end %>
         </section>
 
         <section class="recipe_detail_section3">
